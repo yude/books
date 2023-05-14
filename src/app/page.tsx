@@ -13,7 +13,13 @@ import 'ag-grid-community/styles/ag-theme-alpine.css';
 ModuleRegistry.registerModules([ ClientSideRowModelModule ]);
 
 export default function Home() {
-  const [books, setBooks] = useState()
+  const [books, setBooks] = useState<TData[]>()
+
+  const [filterText, setFilterText] = useState("")
+  const handleFilterUpdate = (e) => {
+    setFilterText(() => e.target.value)
+  }
+
   const { readString } = usePapaParse();
 
   const COLUMNS = [
@@ -49,7 +55,6 @@ export default function Home() {
     },
   ];
   
-
   const columnDefs = useMemo(() => COLUMNS, [])
 
   useEffect(() => {
@@ -71,6 +76,12 @@ export default function Home() {
       })
   }, [])
 
+  const gridOptions = {
+    statusbar: true,
+    headerHeight: "30px",
+    quickFilterText: filterText
+  }
+
   return (
     <div className="h-[64rem]">
     <p className="font-mono bg-pink-200/75 text-4xl tracking-wide underline decoration-pink-500 decoration-4">
@@ -79,7 +90,9 @@ export default function Home() {
     <p>
       インターネット・本棚
     </p>
-    {books && COLUMNS && <AgGridReact
+    {books && COLUMNS &&
+    <AgGridReact
+        gridOptions={gridOptions}
         rowData={books}
         className="ag-theme-alpine"
         columnDefs={columnDefs}

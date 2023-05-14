@@ -1,15 +1,1 @@
-title,authors,publisher,url,category,ISBN
-ぬきたし -抜きゲーみたいな島に住んでるわたしはどうすりゃいいですか?- 1,まめおじたん、Qruppo,集英社,https://www.shueisha.co.jp/books/items/contents.html?isbn=978-4-08-892208-9,コミック,978-4-08-892208-9
-リコリス・リコイル Ordinary days,アサウラ,KADOKAWA,https://dengekibunko.jp/product/322205000797.html,ライトノベル,9784049146189
-プロジェクトセカイ カラフルステージ! feat. 初音ミク コミックアンソロジー,Various Artists,一迅社,https://pjsekai.sega.jp/anthology/index.html,コミック,978-4-7580-2311-5
-Cによるアルゴリズムとデータ構造（改定２版）,茨木俊秀,オーム社,https://www.ohmsha.co.jp/book/9784274223914/,技術,978-4-274-22391-4
-理工系の基礎線形代数学,硲野敏博、加藤芳文,学術図書出版社,https://www.gakujutsu.co.jp/product/978-4-87361-170-9/,数理,978-4-87361-170-9
-B-CAS 事故 '8674422' 2012年テレビ視聴制限崩壊の真実,鳥取ループ,示現舎,https://amzn.asia/d/gtCxSXS,技術,978-4990578787
-Pythonではじめるアルゴリズム入門 伝統的なアルゴリズムで学ぶ定石と計算量,増井敏克,翔泳社,https://www.shoeisha.co.jp/book/detail/9784798163239,技術,9784798163239
-新・明解C言語 入門編,柴田望洋,SB Creative,https://www.sbcr.jp/product/4797377026/,技術,978-4-7973-7702-6
-2020 基本情報技術者 午後試験対策書,アイテックIT人材教育研究部,アイテック,https://www.itec.co.jp/store/products/detail.php?product_id=3667,技術,978-4-86575-181-9
-理工系学生のための微分積分―Webアシスト演習付," 桂利行、岡崎悦明、岡山友昭、齋藤夏雄、佐藤好久、田上真、廣門正行、廣瀬英雄",培風館,http://www.baifukan.co.jp/shoseki/kanren.html,数理,978-4-563-01209-0
-今日から使える！組合せ最適化　離散問題ガイドブック,穴井宏和、斉藤努,講談社サイエンティフィク,https://www.kspub.co.jp/book/detail/1565449.html,数理,978-4-06-156544-9
-超てんちゃん！ NEEDY GIRL OVERDOSE 公式アンソロジー,Various Artists,KADOKAWA,https://www.kadokawa.co.jp/product/322209000007/,コミック,9784046820167
-ぼっち・ざ・ろっく！ (1),はまじあき,まんがタイムKRコミックス,https://amzn.asia/d/dMk6lY2,コミック," ‎ 978-4832270725"
-マスタリング TCP/IP 入門編 第6版,井上直也、村山公保、竹下隆史、荒井透、苅田幸雄,オーム社,https://www.ohmsha.co.jp/book/9784274224478/,技術,978-4-274-22447-8
+books/books.csv

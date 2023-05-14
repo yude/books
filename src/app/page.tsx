@@ -84,7 +84,7 @@ export default function Home() {
   const columnDefs = useMemo(() => COLUMNS, [])
 
   useEffect(() => {
-    fetch('//' + window.location.host + '/books.csv')
+    fetch('//' + window.location.host + '/books/books.csv')
       .then((res) => res.text())
       .then((data) => {
         readString(data, {

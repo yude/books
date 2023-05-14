@@ -12,7 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className="max-w-5xl md:mx-auto subpixel-antialiased mt-2">{children}</body>
+      <body className="subpixel-antialiased mt-2">{children}</body>
     </html>
   )
 }

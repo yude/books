@@ -123,7 +123,6 @@ export default function Home() {
     <form className="bg-white rounded px-8 pt-6 pb-4">
     <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" value={filterText} onChange={handleFilterUpdate} placeholder="書籍を検索... (しかし、日本語検索に不具合がある)" />
     </form>
-    {filterText}
     
     {books && gridRef && 
 

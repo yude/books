@@ -1,37 +1,35 @@
-import { ColumnDef } from "@tanstack/react-table";
-
-type TData = {
-    col1: String;
-    col2: String;
-    col3: String;
-    col4: String;
-    col5: String;
-    col6: String;
+export type TData = {
+    title: String;
+    authors: String;
+    category: String;
+    publisher: String;
+    ISBN: String;
+    url: String;
 }
 
-export const COLUMNS: ColumnDef<any>[] = [
-    {
-      header: "タイトル",
-      accessorKey: "col1",
-    },
-    {
-      header: "著者",
-      accessorKey: "col2",
-    },
-    {
-      header: "出版社",
-      accessorKey: "col3",
-    },
-    {
-      header: "URL",
-      accessorKey: "col4",
-    },
-    {
-      header: "分類",
-      accessorKey: "col5",
+export const COLUMNS = [
+  {
+    headerName: "タイトル",
+    field: "title",
   },
-    {
-      header: "ISBN",
-      accessorKey: "col6",
-    },
-  ];
+  {
+    headerName: "著者",
+    field: "authors",
+  },
+  {
+    headerName: "出版社",
+    field: "publisher",
+  },
+  {
+    headerName: "URL",
+    field: "url",
+  },
+  {
+    headerName: "分類",
+    field: "category",
+  },
+  {
+    headerName: "ISBN",
+    field: "ISBN",
+  },
+];

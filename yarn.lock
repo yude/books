@@ -2,6 +2,25 @@
 # yarn lockfile v1
 
 
+"@ag-grid-community/client-side-row-model@^29.3.4":
+  version "29.3.4"
+  resolved "https://registry.yarnpkg.com/@ag-grid-community/client-side-row-model/-/client-side-row-model-29.3.4.tgz#d601066de6c33c65e22ecd53bf6399a3d8ee2734"
+  integrity sha512-uzM0gJa7qcEEORr27c4zywinHLpnnnaximjqdAZ1vOaGDliGmf4ks75jCek+obAwzIAZeNwZGdFxIrwv3/PBgw==
+  dependencies:
+    "@ag-grid-community/core" "~29.3.4"
+
+"@ag-grid-community/core@^29.3.4", "@ag-grid-community/core@~29.3.4":
+  version "29.3.4"
+  resolved "https://registry.yarnpkg.com/@ag-grid-community/core/-/core-29.3.4.tgz#274740882db7ebc8b7e5aa9ec48bb5d87fa7b62d"
+  integrity sha512-WLLfMwxuQqyw3dtVDDIKCO1eRWqhzqJ8427I8SQnwGDHWoZbeVnFgR2Z5InrOjloh36/UyEkK/T8QgwwhmDmDA==
+
+"@ag-grid-community/react@^29.3.4":
+  version "29.3.4"
+  resolved "https://registry.yarnpkg.com/@ag-grid-community/react/-/react-29.3.4.tgz#e9eea0117306fb2d83420419ad5746864d12d7f5"
+  integrity sha512-U/jblF61lNSqEVAD7OTmL1WiTsGrqvdROpFj9t9HFR+0V9ETJmS4iOW7Td437v8CmXsHe6xFuy0fpQX4qsjLGA==
+  dependencies:
+    prop-types "^15.8.1"
+
 "@alloc/quick-lru@^5.2.0":
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@alloc/quick-lru/-/quick-lru-5.2.0.tgz#7bf68b20c0a350f936915fcae06f58e32007ce30"
@@ -204,18 +223,6 @@
   dependencies:
     tslib "^2.4.0"
 
-"@tanstack/react-table@^8.9.1":
-  version "8.9.1"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-table/-/react-table-8.9.1.tgz#bfe1d286f549b9743d99bfbeb531f2582f9d698b"
-  integrity sha512-yHs2m6lk5J5RNcu2dNtsDGux66wNXZjEgzxos6MRCX8gL+nqxeW3ZglqP6eANN0bGElPnjvqiUHGQvdACOr3Cw==
-  dependencies:
-    "@tanstack/table-core" "8.9.1"
-
-"@tanstack/table-core@8.9.1":
-  version "8.9.1"
-  resolved "https://registry.yarnpkg.com/@tanstack/table-core/-/table-core-8.9.1.tgz#869410ca1748c45d4e19ccfd4db7e36452611674"
-  integrity sha512-2+R83n8vMZND0q3W1lSiF7co9nFbeWbjAErFf27xwbeA9E0wtUu5ZDfgj+TZ6JzdAEQAgfxkk/QNFAKiS8E4MA==
-
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
@@ -312,6 +319,11 @@ acorn@^8.8.0:
   version "8.8.2"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.2.tgz#1b2f25db02af965399b9776b0c2c391276d37c4a"
   integrity sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==
+
+ag-grid-community@^29.3.4:
+  version "29.3.4"
+  resolved "https://registry.yarnpkg.com/ag-grid-community/-/ag-grid-community-29.3.4.tgz#bd469299986d74102f71e61fe328fcf757f2be98"
+  integrity sha512-HQ/meI/4jBXitkpB7GIgmyQMEDm2MPLinZCGqGWnybZ5lnn77RIvBzNdcGlwqRxMjrbpIjRaQOcvWvki1KK4BA==
 
 ajv@^6.10.0, ajv@^6.12.4:
   version "6.12.6"
@@ -1954,7 +1966,7 @@ p-locate@^5.0.0:
   dependencies:
     p-limit "^3.0.2"
 
-papaparse@^5.3.1:
+papaparse@^5.3.1, papaparse@^5.4.1:
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/papaparse/-/papaparse-5.4.1.tgz#f45c0f871853578bd3a30f92d96fdcfb6ebea127"
   integrity sha512-HipMsgJkZu8br23pW15uvo6sib6wne/4woLZPlFf3rpDyMe9ywEXUsuD7+6K9PRkJlVT51j/sCOYDKGGS3ZJrw==

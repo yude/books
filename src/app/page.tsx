@@ -133,6 +133,10 @@ export default function Home() {
         className="ag-theme-alpine"
     />
     }
+    <div className="text-center">
+    <p className="underline"><a href="https://github.com/yude/books">GitHub リポジトリ</a></p>
+    <p className="underline"><a href="https://github.com/yude/books/blob/main/public/books.csv">CSV データ</a></p>
+    </div>
     </div>
   )
 }

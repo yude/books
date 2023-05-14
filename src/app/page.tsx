@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useEffect, useState, useRef } from 'react';
+import { useMemo, useEffect, useState, useRef, JSXElementConstructor, PromiseLikeOfReactNode, ReactElement, ReactFragment, ReactPortal } from 'react';
 import { usePapaParse } from 'react-papaparse';
 import { TData } from "@/types/Table";
 
@@ -19,7 +19,7 @@ export default function Home() {
   const [filterText, setFilterText] = useState("")
   const gridRef = useRef<AgGridReactType>(null)
   
-  const handleFilterUpdate = (e) => {
+  const handleFilterUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilterText(e.target.value)
     if (gridRef.current && gridRef.current.api) {
       if (filterText.length <= 0) {
@@ -47,7 +47,7 @@ export default function Home() {
       field: "title",
       width: "600px",
       filter: true,
-      cellRenderer: (params) => {
+      cellRenderer: (params: { data: { url: string | undefined; title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | PromiseLikeOfReactNode | null | undefined; }; }) => {
         return (
           <a href={params.data.url}>{params.data.title}</a>
         );
@@ -92,7 +92,7 @@ export default function Home() {
           header: true,
           skipEmptyLines: true,
           complete: (results: any) => {
-            const d = results.data.map((p) => {
+            const d = results.data.map((p: { ISBN: string; }) => {
               p.ISBN = p.ISBN.replace(/-/g, "")
               return p
             })
@@ -103,7 +103,7 @@ export default function Home() {
   }, [])
 
   const gridOptions = {
-    headerHeight: "30px",
+    headerHeight: 30,
     enableSorting: true,
     enableFilter: true,
     columnDefs: columnDefs,
@@ -129,6 +129,7 @@ export default function Home() {
 
     <AgGridReact
         ref={gridRef}
+        // @ts-ignore
         gridOptions={gridOptions}
         className="ag-theme-alpine"
     />

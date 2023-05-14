@@ -1,8 +1,8 @@
 import './globals.css'
 
 export const metadata = {
-  title: '@yude/books',
-  description: 'Managing books',
+  title: 'yude の本棚',
+  description: 'Managing my books',
 }
 
 export default function RootLayout({

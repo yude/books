@@ -2,7 +2,7 @@
 
 import { useMemo, useEffect, useState } from 'react';
 import { usePapaParse } from 'react-papaparse';
-import { COLUMNS, TData } from "@/types/Table";
+import { TData } from "@/types/Table";
 
 import { ModuleRegistry } from '@ag-grid-community/core';
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
@@ -16,6 +16,40 @@ export default function Home() {
   const [books, setBooks] = useState()
   const { readString } = usePapaParse();
 
+  const COLUMNS = [
+    {
+      headerName: "タイトル",
+      field: "title",
+      cellRenderer: (params) => {
+        return (
+          <a href={params.data.url}>{params.data.title}</a>
+        );
+      }
+    },
+    {
+      headerName: "著者",
+      field: "authors",
+    },
+    {
+      headerName: "出版社",
+      field: "publisher",
+    },
+    {
+      headerName: "URL",
+      field: "url",
+      hide: true
+    },
+    {
+      headerName: "分類",
+      field: "category",
+    },
+    {
+      headerName: "ISBN",
+      field: "ISBN",
+    },
+  ];
+  
+
   const columnDefs = useMemo(() => COLUMNS, [])
 
   useEffect(() => {
@@ -27,8 +61,11 @@ export default function Home() {
           header: true,
           skipEmptyLines: true,
           complete: (results: any) => {
-            setBooks(results.data)
-            console.log(results.data)
+            const d = results.data.map((p) => {
+              p.ISBN = p.ISBN.replace(/-/g, "")
+              return p
+            })
+            setBooks(d)
           },
         });
       })

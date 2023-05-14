@@ -1,12 +1,13 @@
 'use client';
 
-import { useMemo, useEffect, useState } from 'react';
+import { useMemo, useEffect, useState, useRef } from 'react';
 import { usePapaParse } from 'react-papaparse';
 import { TData } from "@/types/Table";
 
 import { ModuleRegistry } from '@ag-grid-community/core';
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import { AgGridReact } from '@ag-grid-community/react';
+import { AgGridReact as AgGridReactType } from '@ag-grid-community/react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 
@@ -16,16 +17,36 @@ export default function Home() {
   const [books, setBooks] = useState<TData[]>()
 
   const [filterText, setFilterText] = useState("")
+  const gridRef = useRef<AgGridReactType>(null)
+  
   const handleFilterUpdate = (e) => {
-    setFilterText(() => e.target.value)
+    setFilterText(e.target.value)
+    if (gridRef.current && gridRef.current.api) {
+      if (filterText.length <= 0) {
+        gridRef.current.api.resetQuickFilter()
+      } else {
+        gridRef.current.api.setQuickFilter(filterText)
+      }
+    }
   }
 
   const { readString } = usePapaParse();
+
+  interface ICar {
+    title: string,
+    authors: string,
+    publisher: string,
+    url: string,
+    category: string,
+    ISBN: string
+  }
 
   const COLUMNS = [
     {
       headerName: "タイトル",
       field: "title",
+      width: "600px",
+      filter: true,
       cellRenderer: (params) => {
         return (
           <a href={params.data.url}>{params.data.title}</a>
@@ -35,23 +56,28 @@ export default function Home() {
     {
       headerName: "著者",
       field: "authors",
+      filter: false,
     },
     {
       headerName: "出版社",
       field: "publisher",
+      filter: false,
     },
     {
       headerName: "URL",
       field: "url",
+      filter: false,
       hide: true
     },
     {
       headerName: "分類",
       field: "category",
+      filter: false,
     },
     {
       headerName: "ISBN",
       field: "ISBN",
+      filter: false,
     },
   ];
   
@@ -77,9 +103,8 @@ export default function Home() {
   }, [])
 
   const gridOptions = {
-    statusbar: true,
     headerHeight: "30px",
-    quickFilterText: filterText
+    quickFilterText: filterText,
   }
 
   return (
@@ -90,9 +115,17 @@ export default function Home() {
     <p>
       インターネット・本棚
     </p>
-    {books && COLUMNS &&
+
+    <form className="bg-white rounded px-8 pt-6 pb-4">
+    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" value={filterText} onChange={handleFilterUpdate} placeholder="書籍を検索" />
+    </form>
+    {filterText}
+    
+    {books && gridRef && 
+
     <AgGridReact
-        gridOptions={gridOptions}
+        ref={gridRef}
+        // gridOptions={gridOptions}
         rowData={books}
         className="ag-theme-alpine"
         columnDefs={columnDefs}

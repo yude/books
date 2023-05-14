@@ -104,7 +104,11 @@ export default function Home() {
 
   const gridOptions = {
     headerHeight: "30px",
-    quickFilterText: filterText,
+    enableSorting: true,
+    enableFilter: true,
+    columnDefs: columnDefs,
+    rowData: books,
+    // quickFilterText: filterText,
   }
 
   return (
@@ -125,10 +129,8 @@ export default function Home() {
 
     <AgGridReact
         ref={gridRef}
-        // gridOptions={gridOptions}
-        rowData={books}
+        gridOptions={gridOptions}
         className="ag-theme-alpine"
-        columnDefs={columnDefs}
     />
     }
     </div>

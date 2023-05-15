@@ -31,6 +31,27 @@ export default function Home() {
 
   const { readString } = usePapaParse();
 
+  const [windowSize, setWindowSize] = useState({
+    height: 0,
+  });
+  
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        setWindowSize({
+          height: window.innerHeight,
+        });
+      };
+
+      window.addEventListener("resize", handleResize);
+      handleResize();
+      return () => window.removeEventListener("resize", handleResize);
+    } else {
+      return;
+    }
+  }, []);
+
+
   interface ICar {
     title: string,
     authors: string,
@@ -110,7 +131,7 @@ export default function Home() {
   }
 
   return (
-    <div className="h-[64rem]">
+    <>
     <p className="font-mono bg-pink-200/75 text-4xl tracking-wide underline decoration-pink-500 decoration-4">
     @yude/books
     </p>
@@ -121,19 +142,20 @@ export default function Home() {
     <form className="bg-white rounded px-8 pt-6 pb-4" onSubmit={e => { e.preventDefault(); }}>
       <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="search_query" type="text" value={filterText} onChange={handleFilterUpdate} placeholder="書籍を検索..." />
     </form>
-    
+    <div style={{ height: `${windowSize.height - 230}px`}}>
     {books && gridRef && 
-
+    
     <AgGridReact
         ref={gridRef}
         gridOptions={gridOptions}
         className="ag-theme-alpine"
     />
     }
+    </div>
     <div className="text-center">
     <p className="underline"><a href="https://github.com/yude/books">GitHub リポジトリ</a></p>
     <p className="underline"><a href="https://github.com/yude/books/blob/main/public/books.csv">CSV データ</a></p>
     </div>
-    </div>
+    </>
   )
 }

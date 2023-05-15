@@ -21,14 +21,13 @@ export default function Home() {
   
   const handleFilterUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilterText(e.target.value)
-    if (gridRef.current && gridRef.current.api) {
-      if (filterText.length <= 0) {
-        gridRef.current.api.resetQuickFilter()
-      } else {
-        gridRef.current.api.setQuickFilter(filterText)
-      }
-    }
   }
+
+  useEffect(() => {
+    if (gridRef.current && gridRef.current.api) {
+      gridRef.current.api.setQuickFilter(filterText)
+    }
+  }, [filterText])
 
   const { readString } = usePapaParse();
 
@@ -45,7 +44,7 @@ export default function Home() {
     {
       headerName: "タイトル",
       field: "title",
-      width: "600px",
+      width: 600,
       filter: true,
       cellRenderer: (params: { data: { url: string | undefined; title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | PromiseLikeOfReactNode | null | undefined; }; }) => {
         return (
@@ -108,7 +107,6 @@ export default function Home() {
     enableFilter: true,
     columnDefs: columnDefs,
     rowData: books,
-    // quickFilterText: filterText,
   }
 
   return (
@@ -120,15 +118,14 @@ export default function Home() {
       インターネット・本棚
     </p>
 
-    <form className="bg-white rounded px-8 pt-6 pb-4">
-    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" value={filterText} onChange={handleFilterUpdate} placeholder="書籍を検索... (しかし、日本語検索に不具合がある)" />
+    <form className="bg-white rounded px-8 pt-6 pb-4" onSubmit={e => { e.preventDefault(); }}>
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="search_query" type="text" value={filterText} onChange={handleFilterUpdate} placeholder="書籍を検索..." />
     </form>
     
     {books && gridRef && 
 
     <AgGridReact
         ref={gridRef}
-        // @ts-ignore
         gridOptions={gridOptions}
         className="ag-theme-alpine"
     />
